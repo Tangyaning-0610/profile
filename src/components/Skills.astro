@@ -1,40 +1,61 @@
 ---
-const skills = [
-  'HTML/CSS', 'JavaScript', 'TypeScript',
-  'Astro', 'Vue3', 'React',
-  'Tailwind CSS', 'Git', 'Figma',
-  'Node.js', 'Vite', 'SEO优化'
+const skillGroups = [
+  {
+    title: '核心运营能力',
+    items: ['活动策划与落地', '内容体系搭建', '用户生命周期运营', '私域流量转化', '社群精细化运营']
+  },
+  {
+    title: '数据与工具',
+    items: ['Excel/SPSS数据分析', 'SQL基础查询', 'GA/神策数据埋点', 'A/B测试设计', '数据复盘报告']
+  },
+  {
+    title: '内容与创作',
+    items: ['公众号/小红书内容策划', '短视频脚本撰写', '选题与爆款逻辑', 'SEO优化', '品牌文案撰写']
+  },
+  {
+    title: '行业经验',
+    items: ['互联网教育', '电商零售', '本地生活', 'SaaS产品', '知识付费']
+  }
 ];
 ---
 
-<section class="container" style="padding-top: 0;">
-  <h2 class="section-title">技术栈</h2>
-  <div class="skills-list">
-    {skills.map(skill => (
-      <div class="skill-item">{skill}</div>
-    ))}
+<section id="skills" style="background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">核心能力栈</h2>
+    <div class="skills-grid">
+      {skillGroups.map(group => (
+        <div class="skill-group">
+          <h3 class="group-title">{group.title}</h3>
+          <div class="skill-items">
+            {group.items.map(item => (
+              <span class="skill-item">{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    max-width: 800px;
-    margin: 0 auto;
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
   }
-  .skill-item {
-    padding: 10px 20px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-  }
-  .skill-item:hover {
-    border-color: var(--accent);
+  .skill-group { padding: 24px; }
+  .group-title {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
     color: var(--accent);
+    font-weight: 600;
+  }
+  .skill-items { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-item {
+    padding: 6px 14px;
+    background: var(--bg-primary);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
   }
 </style>

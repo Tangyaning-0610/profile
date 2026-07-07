@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+const works = await getCollection('works');
+// 按时间倒序排列
+const sortedWorks = works.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<section id="works" class="container">
+  <h2 class="section-title">精选项目案例</h2>
+  <div class="works-grid">
+    {sortedWorks.map(work => (
+      <a href={`/works/${work.id}`} class="work-card">
+        <div class="work-category">{work.data.category}</div>
+        <h3 class="work-title">{work.data.title}</h3>
+        <p class="work-desc">{work.data.description}</p>
+        <div class="work-data">
+          <span class="data-tag">{work.data.coreData}</span>
+        </div>
+        <div class="work-footer">
+          <span>{work.data.date}</span>
+          <span class="view-detail">查看详情 →</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+  }
+  .work-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .work-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1);
+  }
+  .work-category {
+    display: inline-block;
+    width: fit-content;
+    padding: 4px 12px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .work-title { font-size: 1.25rem; font-weight: 600; }
+  .work-desc { color: var(--text-secondary); font-size: 0.95rem; flex: 1; }
+  .data-tag {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #059669;
+  }
+  .work-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .view-detail { color: var(--accent); font-weight: 500; }
+  @media (max-width: 640px) {
+    .works-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -8,7 +8,11 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://your-portfolio.com', // 替换为你的域名
-  output: 'static', // 纯静态输出，支持所有静态托管平台
+  site: 'https://your-portfolio.com',
+  output: 'static',
   compressHTML: true,
+  // 自动处理 Markdown 样式与图片
+  markdown: {
+    shikiConfig: { theme: 'github-dark' }
+  }
 });

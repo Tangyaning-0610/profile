@@ -3,20 +3,30 @@
 
 ## 一、项目结构
 ```plaintext
-your-portfolio/
+operation-portfolio/
 ├── src/
 │   ├── layouts/
 │   │   └── BaseLayout.astro   # 全局基础布局
 │   ├── components/
 │   │   ├── Navbar.astro       # 顶部导航
-│   │   ├── Hero.astro         # 首屏介绍
-│   │   ├── Projects.astro     # 作品展示
-│   │   ├── About.astro        # 关于我
-│   │   ├── Skills.astro       # 技能栈
+│   │   ├── Hero.astro         # 首屏个人定位
+│   │   ├── Stats.astro        # 核心数据成果看板
+│   │   ├── WorksList.astro    # 案例卡片列表
+│   │   ├── Skills.astro       # 运营能力栈
+│   │   ├── About.astro        # 关于我/方法论
 │   │   ├── Contact.astro      # 联系方式
 │   │   └── Footer.astro       # 页脚
-│   └── pages/
-│       └── index.astro        # 首页入口
-├── public/                    # 存放头像、作品封面等静态资源
-└── astro.config.mjs           # Astro 配置文件
+│   ├── pages/
+│   │   ├── index.astro        # 首页入口
+│   │   └── works/
+│   │       └── [...slug].astro # 案例详情页（自动路由）
+│   └── content/
+│       ├── config.ts          # 内容集合规则配置
+│       └── works/             # 所有运营案例（纯 Markdown 编写）
+│           ├── activity-01.md # 活动运营案例示例
+│           └── content-01.md  # 内容运营案例示例
+├── public/
+│   └── works-html/            # 存放 HTML 格式作品（活动页/H5等）
+│       └── activity-h5.html
+└── astro.config.mjs
 ```
