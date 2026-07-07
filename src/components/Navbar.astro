@@ -1,0 +1,58 @@
+---
+const navLinks = [
+  { name: '首页', href: '/' },
+  { name: '作品', href: '#projects' },
+  { name: '关于', href: '#about' },
+  { name: '联系', href: '#contact' },
+];
+---
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="/" class="logo">Portfolio</a>
+    <nav class="nav-links">
+      {navLinks.map(link => (
+        <a href={link.href}>{link.name}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+  .nav-links a {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--text-primary);
+  }
+  @media (max-width: 640px) {
+    .nav-links {
+      gap: 20px;
+      font-size: 0.9rem;
+    }
+  }
+</style>

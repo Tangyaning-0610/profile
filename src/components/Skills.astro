@@ -1,0 +1,40 @@
+---
+const skills = [
+  'HTML/CSS', 'JavaScript', 'TypeScript',
+  'Astro', 'Vue3', 'React',
+  'Tailwind CSS', 'Git', 'Figma',
+  'Node.js', 'Vite', 'SEO优化'
+];
+---
+
+<section class="container" style="padding-top: 0;">
+  <h2 class="section-title">技术栈</h2>
+  <div class="skills-list">
+    {skills.map(skill => (
+      <div class="skill-item">{skill}</div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .skill-item {
+    padding: 10px 20px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .skill-item:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

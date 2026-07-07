@@ -1,0 +1,104 @@
+---
+const projects = [
+  {
+    title: '品牌官网重构',
+    desc: '基于Astro搭建的企业品牌官网，首屏加载0.8s，支持多语言与SEO优化',
+    tags: ['Astro', 'TypeScript', 'SEO'],
+    image: '/project1.jpg',
+    link: '#'
+  },
+  {
+    title: '个人博客系统',
+    desc: 'Markdown驱动的静态博客，支持标签分类、全文搜索与暗黑模式',
+    tags: ['Astro', 'MDX', 'Tailwind'],
+    image: '/project2.jpg',
+    link: '#'
+  },
+  {
+    title: '数据可视化平台',
+    desc: '后台数据看板，支持多维度图表展示与实时数据更新',
+    tags: ['Vue3', 'ECharts', 'Pinia'],
+    image: '/project3.jpg',
+    link: '#'
+  },
+];
+---
+
+<section id="projects" class="container">
+  <h2 class="section-title">精选作品</h2>
+  <div class="project-grid">
+    {projects.map(project => (
+      <a href={project.link} target="_blank" class="project-card">
+        <div class="project-cover">
+          <!-- 替换为真实作品图，图片放入 public 目录 -->
+          <div class="cover-placeholder">作品封面</div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            {project.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <h3 class="project-title">{project.title}</h3>
+          <p class="project-desc">{project.desc}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  .project-cover {
+    height: 200px;
+    background: var(--bg-primary);
+  }
+  .cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+  }
+  .project-info {
+    padding: 20px;
+  }
+  .project-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    border-radius: 999px;
+  }
+  .project-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  .project-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+</style>
