@@ -8,7 +8,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://your-portfolio.com',
+  site: 'https://profile.com',
   output: 'static',
   compressHTML: true,
   // 自动处理 Markdown 样式与图片

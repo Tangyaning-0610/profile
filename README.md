@@ -3,7 +3,7 @@
 
 ## 一、项目结构
 ```plaintext
-operation-portfolio/
+operation-profile/
 ├── src/
 │   ├── layouts/
 │   │   └── BaseLayout.astro   # 全局基础布局
