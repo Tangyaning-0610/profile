@@ -1,25 +1,25 @@
 ---
 const skillGroups = [
   {
-    title: '核心运营能力',
-    items: ['活动策划与落地', '内容体系搭建', '用户生命周期运营', '私域流量转化', '社群精细化运营']
+    title: '媒介运营',
+    items: ['KOL/KOC达人投放', '品牌PR传播', '异业合作', '达人资源库搭建', '私域社群运营']
   },
   {
-    title: '数据与工具',
-    items: ['Excel/SPSS数据分析', 'SQL基础查询', 'GA/神策数据埋点', 'A/B测试设计', '数据复盘报告']
+    title: '内容运营',
+    items: ['小红书内容策划', '账号冷启动', '爆文打造', '店铺运营', '产品种草']
   },
   {
-    title: '内容与创作',
-    items: ['公众号/小红书内容策划', '短视频脚本撰写', '选题与爆款逻辑', 'SEO优化', '品牌文案撰写']
+    title: '投放能力',
+    items: ['千川投放', '随心推', '信息流广告', 'CPS推广', 'ROI优化']
   },
   {
     title: '行业经验',
-    items: ['互联网教育', '电商零售', '本地生活', 'SaaS产品', '知识付费']
+    items: ['母婴品类', '电商玩具', '财经教育', '品牌服务', '知识付费']
   }
 ];
 ---
 
-<section id="skills" style="background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="skills" style="background: white;">
   <div class="container">
     <h2 class="section-title">核心能力栈</h2>
     <div class="skills-grid">
@@ -38,6 +38,12 @@ const skillGroups = [
 </section>
 
 <style>
+  #skills {
+    padding: 40px 0;
+    margin: 40px 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

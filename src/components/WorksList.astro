@@ -6,7 +6,7 @@ const sortedWorks = works.sort((a, b) => new Date(b.data.date).getTime() - new D
 ---
 
 <section id="works" class="container">
-  <h2 class="section-title">精选项目案例</h2>
+  <h2 class="section-title">工作经历</h2>
   <div class="works-grid">
     {sortedWorks.map(work => (
       <a href={`/works/${work.id}`} class="work-card">

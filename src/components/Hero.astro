@@ -1,28 +1,44 @@
 ---
+const stats = [
+  { num: '1700W+', label: '累计活动曝光' },
+  { num: '5,750+', label: '累计招商达人' },
+  { num: '61.5%', label: 'KOL投放爆文率' },
+  { num: '10+', label: '操盘核心项目' },
+];
 ---
 
 <section class="hero">
   <div class="container hero-inner">
     <div class="hero-content">
       <p class="greeting">你好，我是</p>
-      <h1 class="hero-title">XXX · 资深运营专家</h1>
-      <p class="hero-subtitle">5年互联网运营经验 | 内容/活动/用户增长全链路操盘</p>
+      <h1 class="hero-title">唐雅凝 · 媒介运营专家</h1>
+      <p class="hero-subtitle">5年互联网一线运营经验 | 品牌PR/内容运营/达人投放全链路操盘</p>
       <p class="hero-desc">
-        擅长从0到1搭建运营体系，主导过千万级曝光活动与百万用户增长项目。
-        注重数据驱动与方法论沉淀，能独立完成策略制定、落地执行与效果复盘全流程。
+        拥有成熟母婴垂类KOL/KOC资源库，精通品牌PR传播、内容运营与达人投放。
+        熟悉小红书、抖音等平台传播逻辑与算法规则，能独立完成策略制定、落地执行与效果复盘全流程。
       </p>
       <div class="hero-buttons">
-        <a href="#works" class="btn btn-primary">查看项目案例</a>
+        <a href="#works" class="btn btn-primary">查看工作经历</a>
         <a href="#contact" class="btn btn-outline">联系我</a>
-      </div>
+      </div>        
     </div>
     <div class="hero-tags">
-      <div class="tag-card">活动策划</div>
+      <div class="tag-card">品牌PR</div>
+      <div class="tag-card">达人投放</div>
       <div class="tag-card">内容运营</div>
-      <div class="tag-card">用户增长</div>
+      <div class="tag-card">私域运营</div>
       <div class="tag-card">数据分析</div>
-      <div class="tag-card">社群运营</div>
-      <div class="tag-card">私域转化</div>
+      <div class="tag-card">电商转化</div>
+    </div>
+  </div>
+  <div class="container hero-stats">
+    <div class="stats-grid">
+      {stats.map(item => (
+        <div class="stat-card">
+          <div class="stat-num">{item.num}</div>
+          <div class="stat-label">{item.label}</div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -31,7 +47,8 @@
   .hero {
     min-height: calc(100vh - 64px);
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     padding: 40px 0;
   }
   .hero-inner {
@@ -39,6 +56,8 @@
     grid-template-columns: 1.5fr 1fr;
     gap: 60px;
     align-items: center;
+    margin-bottom: 40px;
+    flex-shrink: 0;
   }
   .greeting { color: var(--accent); font-size: 1.1rem; margin-bottom: 12px; }
   .hero-title { font-size: 2.8rem; line-height: 1.2; margin-bottom: 12px; }
@@ -83,10 +102,31 @@
     transition: all 0.2s;
   }
   .tag-card:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats { margin-top: 40px; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 100px;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+  }
+  .stat-card { text-align: center; }
+  .stat-num {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .stat-label { color: var(--text-secondary); font-size: 0.95rem; }
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; text-align: center; }
     .hero-desc { margin: 0 auto 36px; }
     .hero-buttons { justify-content: center; }
     .hero-title { font-size: 2rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); padding: 24px; }
+    .stat-num { font-size: 2rem; }
   }
 </style>

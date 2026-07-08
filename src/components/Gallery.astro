@@ -1,0 +1,326 @@
+---
+const galleryItems = [
+  {
+    title: '抖音达人投放数据',
+    category: '数据成果',
+    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20dashboard%20analytics%20chart%20data%20visualization%20growth%20graphs%20metrics%20professional%20dark%20theme&image_size=portrait_4_3',
+  },
+  {
+    title: '小红书爆文内容',
+    category: '内容运营',
+    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20social%20media%20content%20post%20design%20pink%20aesthetic%20xiaohongshu%20style&image_size=portrait_4_3',
+  },
+  {
+    title: 'KOL合作案例',
+    category: '达人投放',
+    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20influencer%20marketing%20collaboration%20profile%20cards%20engagement%20metrics&image_size=portrait_4_3',
+  },
+  {
+    title: '活动运营策划',
+    category: '活动运营',
+    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20event%20marketing%20campaign%20planning%20calendar%20task%20management&image_size=portrait_4_3',
+  },
+  {
+    title: '品牌PR传播',
+    category: '品牌运营',
+    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20brand%20PR%20media%20coverage%20press%20clippings%20sentiment%20analysis&image_size=portrait_4_3',
+  },
+  {
+    title: '电商店铺数据',
+    category: '电商运营',
+    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20ecommerce%20store%20analytics%20sales%20revenue%20charts%20conversion%20metrics&image_size=portrait_4_3',
+  },
+];
+---
+
+<section id="gallery" class="container" style="padding-top: 120px;">
+  <h2 class="section-title">成果展示</h2>
+  <div class="gallery-grid">
+    {galleryItems.map((item, index) => (
+      <div 
+        class="gallery-item" 
+        key={index}
+        onClick={() => openLightbox(index)}
+      >
+        <div class="gallery-image-wrapper">
+          <img 
+            src={item.image} 
+            alt={item.title} 
+            loading="lazy"
+            class="gallery-image"
+          />
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">{item.category}</span>
+              <h3 class="gallery-title">{item.title}</h3>
+            </div>
+            <div class="gallery-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<div id="lightbox" class="lightbox" onClick="closeLightbox()">
+  <div class="lightbox-content" onClick="event.stopPropagation()">
+    <button class="lightbox-close" onClick="closeLightbox()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <button class="lightbox-prev" onClick="prevImage()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <button class="lightbox-next" onClick="nextImage()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+    <img id="lightbox-image" src="" alt="" />
+    <div class="lightbox-caption">
+      <span id="lightbox-category"></span>
+      <span id="lightbox-title"></span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .gallery-item {
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .gallery-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent);
+  }
+  .gallery-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 133.33%;
+    overflow: hidden;
+  }
+  .gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .gallery-item:hover .gallery-image {
+    transform: scale(1.1);
+  }
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  .gallery-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .gallery-category {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--accent);
+    color: white;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    width: fit-content;
+  }
+  .gallery-title {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .gallery-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    padding: 12px;
+    border-radius: 50%;
+  }
+  .gallery-item:hover .gallery-icon {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .lightbox.active {
+    display: flex;
+    opacity: 1;
+  }
+  .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover,
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .lightbox-close {
+    top: -40px;
+    right: 0;
+  }
+  .lightbox-prev {
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .lightbox-next {
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .lightbox-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    color: white;
+  }
+  #lightbox-category {
+    padding: 4px 12px;
+    background: var(--accent);
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+  #lightbox-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .lightbox-prev {
+      left: 10px;
+    }
+    .lightbox-next {
+      right: 10px;
+    }
+    .lightbox-close {
+      right: 10px;
+    }
+  }
+</style>
+
+<script is:inline>
+  const galleryItems = JSON.parse('[{"title":"抖音达人投放数据","category":"数据成果","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20dashboard%20analytics%20chart%20data%20visualization%20growth%20graphs%20metrics%20professional%20dark%20theme&image_size=portrait_4_3"},{"title":"小红书爆文内容","category":"内容运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20social%20media%20content%20post%20design%20pink%20aesthetic%20xiaohongshu%20style&image_size=portrait_4_3"},{"title":"KOL合作案例","category":"达人投放","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20influencer%20marketing%20collaboration%20profile%20cards%20engagement%20metrics&image_size=portrait_4_3"},{"title":"活动运营策划","category":"活动运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20event%20marketing%20campaign%20planning%20calendar%20task%20management&image_size=portrait_4_3"},{"title":"品牌PR传播","category":"品牌运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20brand%20PR%20media%20coverage%20press%20clippings%20sentiment%20analysis&image_size=portrait_4_3"},{"title":"电商店铺数据","category":"电商运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20ecommerce%20store%20analytics%20sales%20revenue%20charts%20conversion%20metrics&image_size=portrait_4_3"}]');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightbox() {
+    const item = galleryItems[currentIndex];
+    document.getElementById('lightbox-image').src = item.image;
+    document.getElementById('lightbox-image').alt = item.title;
+    document.getElementById('lightbox-category').textContent = item.category;
+    document.getElementById('lightbox-title').textContent = item.title;
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    updateLightbox();
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    updateLightbox();
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (document.getElementById('lightbox').classList.contains('active')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    }
+  });
+</script>
