@@ -1,4 +1,8 @@
 // wrangler.jsonc
 {
-  "name": "profile" // 和 Cloudflare 面板 Worker 名称完全一致
+  "name": "profile", // 和 Cloudflare 面板 Worker 名称完全一致
+  "compatibility_date": "2026-07-08",
+  "assets": {
+    "directory": "./dist"
+  }
 }
