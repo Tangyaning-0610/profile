@@ -1,34 +1,34 @@
 ---
 const galleryItems = [
   {
-    title: '抖音达人投放数据',
+    title: '小火车KOL笔记',
     category: '数据成果',
-    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20dashboard%20analytics%20chart%20data%20visualization%20growth%20graphs%20metrics%20professional%20dark%20theme&image_size=portrait_4_3',
+    image: '/gallery/图片1.png',
   },
   {
-    title: '小红书爆文内容',
-    category: '内容运营',
-    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20social%20media%20content%20post%20design%20pink%20aesthetic%20xiaohongshu%20style&image_size=portrait_4_3',
+    title: '小火车KOL笔记',
+    category: '数据成果',
+    image: '/gallery/图片2.png',
   },
   {
-    title: 'KOL合作案例',
-    category: '达人投放',
-    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20influencer%20marketing%20collaboration%20profile%20cards%20engagement%20metrics&image_size=portrait_4_3',
+    title: '小火车KOL笔记',
+    category: '数据成果',
+    image: '/gallery/图片3.png',
   },
   {
-    title: '活动运营策划',
-    category: '活动运营',
-    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20event%20marketing%20campaign%20planning%20calendar%20task%20management&image_size=portrait_4_3',
+    title: '小火车KOL笔记',
+    category: '数据成果',
+    image: '/gallery/图片4.png',
   },
   {
-    title: '品牌PR传播',
-    category: '品牌运营',
-    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20brand%20PR%20media%20coverage%20press%20clippings%20sentiment%20analysis&image_size=portrait_4_3',
+    title: '小火车KOL笔记',
+    category: '数据成果',
+    image: '/gallery/图片5.png',
   },
   {
-    title: '电商店铺数据',
-    category: '电商运营',
-    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20ecommerce%20store%20analytics%20sales%20revenue%20charts%20conversion%20metrics&image_size=portrait_4_3',
+    title: '小火车KOL笔记',
+    category: '数据成果',
+    image: '/gallery/图片6.png',
   },
 ];
 ---
@@ -37,10 +37,9 @@ const galleryItems = [
   <h2 class="section-title">成果展示</h2>
   <div class="gallery-grid">
     {galleryItems.map((item, index) => (
-      <div 
-        class="gallery-item" 
-        key={index}
-        onClick={() => openLightbox(index)}
+      <div
+        class="gallery-item"
+        data-index={index}
       >
         <div class="gallery-image-wrapper">
           <img 
@@ -68,20 +67,20 @@ const galleryItems = [
   </div>
 </section>
 
-<div id="lightbox" class="lightbox" onClick="closeLightbox()">
-  <div class="lightbox-content" onClick="event.stopPropagation()">
-    <button class="lightbox-close" onClick="closeLightbox()">
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"/>
         <line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
     </button>
-    <button class="lightbox-prev" onClick="prevImage()">
+    <button class="lightbox-prev" onclick="prevImage()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="15 18 9 12 15 6"/>
       </svg>
     </button>
-    <button class="lightbox-next" onClick="nextImage()">
+    <button class="lightbox-next" onclick="nextImage()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="9 18 15 12 9 6"/>
       </svg>
@@ -97,7 +96,8 @@ const galleryItems = [
 <style>
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
+    justify-content: center;
     gap: 24px;
   }
   .gallery-item {
@@ -117,7 +117,7 @@ const galleryItems = [
   .gallery-image-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 133.33%;
+    padding-top: 160%;
     overflow: hidden;
   }
   .gallery-image {
@@ -283,7 +283,7 @@ const galleryItems = [
 </style>
 
 <script is:inline>
-  const galleryItems = JSON.parse('[{"title":"抖音达人投放数据","category":"数据成果","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20dashboard%20analytics%20chart%20data%20visualization%20growth%20graphs%20metrics%20professional%20dark%20theme&image_size=portrait_4_3"},{"title":"小红书爆文内容","category":"内容运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20social%20media%20content%20post%20design%20pink%20aesthetic%20xiaohongshu%20style&image_size=portrait_4_3"},{"title":"KOL合作案例","category":"达人投放","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20influencer%20marketing%20collaboration%20profile%20cards%20engagement%20metrics&image_size=portrait_4_3"},{"title":"活动运营策划","category":"活动运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20event%20marketing%20campaign%20planning%20calendar%20task%20management&image_size=portrait_4_3"},{"title":"品牌PR传播","category":"品牌运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20brand%20PR%20media%20coverage%20press%20clippings%20sentiment%20analysis&image_size=portrait_4_3"},{"title":"电商店铺数据","category":"电商运营","image":"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20phone%20screenshot%20ecommerce%20store%20analytics%20sales%20revenue%20charts%20conversion%20metrics&image_size=portrait_4_3"}]');
+  const galleryItems = JSON.parse('[{"title":"小火车KOL笔记","category":"数据成果","image":"/gallery/图片1.png"},{"title":"小火车KOL笔记","category":"数据成果","image":"/gallery/图片2.png"},{"title":"小火车KOL笔记","category":"数据成果","image":"/gallery/图片3.png"},{"title":"小火车KOL笔记","category":"数据成果","image":"/gallery/图片4.png"},{"title":"小火车KOL笔记","category":"数据成果","image":"/gallery/图片5.png"},{"title":"小火车KOL笔记","category":"数据成果","image":"/gallery/图片6.png"}]');
   let currentIndex = 0;
 
   function openLightbox(index) {
@@ -315,6 +315,14 @@ const galleryItems = [
     currentIndex = (currentIndex + 1) % galleryItems.length;
     updateLightbox();
   }
+
+  document.querySelector('.gallery-grid').addEventListener('click', function(e) {
+    const item = e.target.closest('.gallery-item');
+    if (item) {
+      const index = parseInt(item.dataset.index, 10);
+      openLightbox(index);
+    }
+  });
 
   document.addEventListener('keydown', function(e) {
     if (document.getElementById('lightbox').classList.contains('active')) {
